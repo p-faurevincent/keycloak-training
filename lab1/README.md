@@ -1,169 +1,87 @@
-# Requirements and Setup
+# Lab 1 : Discovering the Keycloak admin and account consoles
 
-## Requirements
+In this section, we will take a look at the Keycloak admin and account consoles. The admin console is an extensive console that allows you to configure and manage Keycloak. The account console, on the other hand, is there to allow your end users to manage their accounts.
 
-* [Java SDK](https://adoptopenjdk.net) Version 11 or 14
-* A Java IDE like
-  * [Eclipse](https://www.eclipse.org/downloads)
-  * [Spring Toolsuite](https://spring.io/tools)
-  * [IntelliJ](https://www.jetbrains.com/idea/download)
-  * [Visual Studio Code](https://code.visualstudio.com)
-* [Keycloak](https://keycloak.org)
-* [Docker](https://docs.docker.com/engine/install) if you want to run Keycloak as docker container
-* [Git](https://git-scm.com)
-* [Postman](https://www.getpostman.com/downloads), [Httpie](https://httpie.org/#installation), or [Curl](https://curl.haxx.se/download.html) for REST calls
+## Getting started with the Keycloak admin console
+In this section, you will learn how to log in to the Keycloak admin console as well as learn how to set up the basic configuration needed to secure your first application.
 
-In case you select [Postman](https://www.getpostman.com/downloads), then the provided [Postman Collection](oidc_workshop.postman_collection.json) might be helpful.
-Just import this [Postman Collection (Version 2.1 format)](oidc_workshop.postman_collection.json) into Postman.
+The Keycloak admin console provides an extensive and friendly interface for administrators and developers to configure and manage Keycloak.
 
-### IntelliJ
+To access the admin console, open http://localhost:8080/auth/admin/ in a browser. You will be redirected to the Keycloak login pages, where you can log in with the admin username and password you created in the previous section while installing Keycloak.
 
-IntelliJ does not require any specific additional plugins or configuration.
+Once you have logged in, you will see the configuration for the master realm in Keycloak, as shown in the following screenshot:
 
-### Eclipse IDE
+![The Keycloak admin console](./images/admin_console.jpg)
 
-If you are an Eclipse user, then the usage of the Eclipse-based [Spring ToolSuite](https://spring.io/tools) is strongly recommended.
-This eclipse variant already has all the required gradle and spring boot support pre-installed.
 
-In case you want to stick to your plain Eclipse installation then you have to add the following features via the
-eclipse marketplace: 
+You will learn a lot more about the admin console throughout the training, but let's go through a few steps to make your Keycloak application ready to start securing applications.
 
-* BuildShip Gradle Integration (Version 3.x). This might be already pre-installed depending 
-on your eclipse variant (e.g. Eclipse JavaEE) installed.
-* Spring Tools 4 for Spring Boot (Spring Tool Suite 4).
+###Creating and configuring a realm
+The first thing you will want to do is create a realm for your applications and users. Think of a realm as a tenant. A realm is fully isolated from other realms, it has its own configuration, and its own set of applications and users. This allows a single installation of Keycloak to be used for multiple purposes. For example, you may want to have one realm for internal applications and employees, and another realm for external applications and customers.
 
-### Visual Studio Code
+To create a new realm, hover your mouse over the realm selector in the top-left corner (just below the Keycloak logo). When hovering your mouse over the realm selector, you will see a list of realms, including a button to create a new realm. Click on the **Add realm** button:
 
-To be able to work properly in Visual Studio Code with this Spring Boot Java Gradle project you need at least these extensions:
+![Realm selector](./images/add_realm.jpg)
 
-* Java Extension Pack
-* vscode-gradle-language
-* VS Code Spring Boot Application Development Extension Pack
+On the next page, enter a name for the realm. As the name is used in URLs, the name should ideally not use special characters that need escaping in URLs (such as spaces). Once created, you can set a human friendly display name. For example, use **myrealm** for the name, and **My Realm** for the display name.
 
-## Get the source code
-                       
-Clone this GitHub repository (https://github.com/andifalk/secure-oauth2-oidc-workshop):
 
-```
-git clone https://github.com/andifalk/secure-oauth2-oidc-workshop.git oidc_workshop
-```
+###Creating a user
+Once you have created the realm, let's create the first user in the realm:
 
-After that you can import the whole workshop project directory into your IDE as a __gradle project__:
+1. From the left-hand menu, click on **Users**, and then click on **Add User**.
+2. Enter a memorable username, and also enter a value of your choice for email, first name, and last name.
+The **Email Verified** option can be selected by an administrator if they know this is the valid email address for the user.
+3. **Required User** Actions allows an administrator to require a user to perform some initial actions on the next login; for example, to require the user to review their profile, or to verify their email address.
+4. Remember to click on **Save** after you have completed the form.
 
-* [IntelliJ](https://www.jetbrains.com/idea): Open menu item "New project from existing sources..." and then select 'Gradle' when prompted
-* [Eclipse](https://www.eclipse.org/) or [Spring ToolSuite](https://spring.io/tools): Open menu item "Import/Gradle/Existing gradle project"
-* [Visual Studio Code](https://code.visualstudio.com/): Just open the root directory in VS Code and wait until VS Code has configured the project
+A user has a few standard built-in attributes, such as first name, but it is also possible to add any custom attributes through the **Attributes** tab.
 
-## Run the java applications
+Before the user can log in, you have to create an initial temporary password. To do this, click on the **Credentials** tab. In the **Set Password** section, enter a password and click **Set Password**.
 
-All spring boot based java projects can either be run using your Java IDE or using the command line
-with changing into the corresponding project directory and issuing a `gradlew bootRun` command.
+If the **Temporary** option is enabled, the user is required to change the password when logging in for the first time. In cases where an administrator creates the user, this makes a lot of sense.
 
-For other demo applications like the ones for Micronaut or Quarkus please consult written instructions there. 
+###Creating a group
 
-In this workshop we will use [Keycloak](https://keycloak.org) by JBoss/RedHat as local identity provider.  
-[Keycloak](https://keycloak.org) is [certified for OpenID Connect 1.0](https://openid.net/developers/certified/) and 
-implements OAuth 2.0 and OpenID Connect 1.0.
+Next, let's create a group and add the user we previously created to the group. From the menu on the left-hand side, click on **Groups**, and then click on **New**.
 
-## Setup Keycloak
+Enter a name for the group, for example, **mygroup** , and then click on **Save** .
 
-You need a compliant OAuth 2.0 / OpenID Connect provider for this workshop.
-Here we will use [Keycloak](https://keycloak.org) by RedHat/JBoss.
+Once you have created the group, you can add attributes to the group. A user inherits all attributes from a group it belongs to. This can be useful if, for example, you have a group for all employees in an office and want to add the office address to all employees in this group.
 
-To set up Keycloak you have 2 options:
+You can also grant roles to a group, which again is inherited by all members of the group.
 
-1. Run Keycloak using Docker (if you have Docker installed)
-2. Local Keycloak installation & configuration
+To add the user to the group, go back to the **Users** page. Click **View all** users and select the user you created previously.
 
-### Using Docker
+Next, click on the **Groups** tab. In the right-hand column, select the group you created previously and click on **Join** to add the user to the group.
 
-If you have Docker installed then setting up Keycloak is quite easy.
+###Creating a global role
+To create a global role, click on **Roles** in the menu on the left-hand side, and then click on **Add Role**. Enter a role name, for example, **myrole**. You can also add a description to the role, which can be especially useful if there are other administrators.
 
-To configure and run Keycloak using docker
+Any role in Keycloak can be turned into a composite role, allowing other roles to be added to the role. A user who is granted a composite role will dynamically be granted all roles within the composite role. Composite roles can even contain other composite roles. This feature can be very powerful, but, at the same time, should be used with some care. Composite roles can be a bit difficult to manage, and can also have a performance overhead if overused, especially if there are many layers of composite roles.
 
-1. Open a new command line terminal window
-2. Change directory to subdirectory _setup_ of the workshop repository
-3. Open and edit the script _run_keycloak_docker.sh_ or _run_keycloak_docker.bat_ (depending on your OS) and adapt the value for _WORKSHOP_HOME_ to your local workshop repository directory
-3. Save and execute the script _run_keycloak_docker.sh_ or _run_keycloak_docker.bat_ (depending on your OS)
+To add the user to the role, go back to the Users page. Click View all users and select the user you created previously.
 
-Wait until the docker container has been started completely. When you see the line _Started 590 of 885 services_, 
-then Keycloak is configured and running.  
-Now open your web browser and navigate to [localhost:8080/auth/admin](http://localhost:8080/auth/admin) and login
-using the credentials _admin_/_admin_.
+Next, click on the **Role Mappings** tab. In the left-hand column, select the role you created previously and click on **Add selected** to add the user to the role.
 
-If you see errors importing the workshop configuration then please re-check the value of the _WORKSHOP_HOME_ environment variable (step 2 above) so that the script can find the _keycloak_realm_workshop.json_ file to import.
+You have now created all the required initial configuration to get started securing your first application, but first let's take a look at the Keycloak account console, which lets users manage their own accounts.
 
-### Local Installation
+## Getting started with the Keycloak account console
 
-To set up [Keycloak](https://keycloak.org): 
+The Keycloak account console provides an interface where users can manage their own accounts, including the following:
 
-1. Download the [Standard Server Distribution of Keycloak (Version 12.0.4 or later)](https://www.keycloak.org/downloads-archive.html).
-2. Extract the downloaded zip/tar file __keycloak-x.x.x.zip__/__keycloak-x.x.x.tar-gz__ into a new local directory of your choice 
-(this directory will be referenced as __<KEYCLOAK_INSTALL_DIR>__ in next steps)
+- Updating their user profile
+- Updating their password
+- Enabling second factor authentication
+- Viewing applications, including what applications they have authenticated to
+- Viewing open sessions, including remotely signing out of other sessions
 
-This workshop requires a pre-defined configuration for Keycloak (i.e. some OAuth2/OpenID Connect clients, and user accounts).
+To access the account console, open http://localhost:8080/auth/realms/myrealm/account/ in a browser (if you used a different realm name in the previous section, replace myrealm with the name of your realm). You will be redirected to the Keycloak login pages, where you can log in with the username and password you created in the previous section while creating your first user:
 
-To configure Keycloak you need to have checked out the GIT repository for this workshop.
-All you need to configure Keycloak is located in the subdirectory _setup_ of the repository.
+![The Keycloak Account Console](./images/account_console.jpg)
 
-1. Change into the subdirectory _setup_ of the workshop git repository
-2. Open the file __import_keycloak_realm.sh__ or __import_keycloak_realm.bat__ (depending on your OS) in the _setup_ subdirectory 
-   and change the value of the environment variable _KEYCLOAK_HOME_ to your __<KEYCLOAK_INSTALL_DIR>__ of step 2 and save the file
-3. Now open a new command-line terminal window, change into the subdirectory _setup_ again and execute the provided script
-   __import_keycloak_realm.sh__ or __import_keycloak_realm.bat__ (depending on your OS). 
-   This starts a standalone Keycloak instance and automatically imports the required configuration.
-4. Wait until the import has finished (look for a line like _Started 590 of 885 services_) then 
-   direct your web browser to [localhost:8080/auth](http://localhost:8080/auth/)
-5. Here you have to create the initial admin user to get started. Please use the value _admin_ both as username and as password, 
-then click the button _Create_. Please note: In production you must use a much more secure password for the admin user!
-6. Now you can continue to the _Administration Console_ by clicking on the corresponding link displayed and login using the new credentials
+**Tip** : You can also find the URL of the account console through the Keycloak admin console. In the admin console, click on Clients, and then you will find the URL of the account console next to the account client.
 
-![Keycloak Init](keycloak_initial_admin.png)
+You have now learned how Keycloak not only provides an extensive admin console, but also a self-management console for users of your applications to manage their own accounts.
 
-If all worked successfully you should see the settings page of the _Workshop_ realm and Keycloak is ready for this Workshop !
 
-#### Startup Keycloak
-
-Please note: You have to do the initial setup section for local install variant only once.
-If you have stopped Keycloak and want to start it again then follow the next lines in this section.
-
-To startup [Keycloak](https://keycloak.org):
-
-1. Open a terminal and change directory to subdirectory __<KEYCLOAK_INSTALL_DIR>/bin__ and start Keycloak using 
-the __standalone.sh__(Linux or macOS) or __standalone.bat__ (Windows) scripts
-2. Wait until keycloak has been started completely - you should see something like this `...(WildFly Core ...) started in 6902ms - Started 580 of 842 services`
-
-#### Remap default port of Keycloak
-
-In case port _8080_ does not work on your local machine (i.e. is used by another process) then you may have to change Keycloak to use another port.
-This can be done like this (e.g. for remapping port to 8090 instead of 8080):
-
-On Linux/macOS:
-```
-./standalone.sh -Djboss.socket.binding.port-offset=10
-```
-
-On Windows:
-```
-./standalone.bat -Djboss.socket.binding.port-offset=10
-```
-
-Note: Take into account that for all URL's pointing to Keycloak in the hands-on steps you always have to use the remapped port
-instead of default one (8080) as well. 
-
-### Open Keycloak Admin UI
-
-Independent of the setup type (docker or local install), to access the web admin UI of Keycloak 
-you need to perform these steps:
-
-1. Now direct your browser to [localhost:8080/auth/admin](http://localhost:8080/auth/admin/)
-2. Login into the admin console using __admin/admin__ as credentials
-
-Now, if you see the realm _workshop_ on the left then Keycloak is ready to use it for this workshop.
-
-![Keycloak Workshop](keycloak_workshop.png)
-
-### Further Information
-
-If you want to know more about setting up a Keycloak server for your own projects 
-then please consult the [keycloak administration docs](https://www.keycloak.org/docs/latest/server_admin/index.html).
