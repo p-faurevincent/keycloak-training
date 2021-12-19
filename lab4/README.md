@@ -4,7 +4,7 @@ For this lab, we are going to use the OAuth 2.0 playground, which is a basic Nod
 
 It does not use any libraries for OAuth 2.0, but rather all OAuth 2.0 requests are crafted by the application itself. One thing to note here is that this application does not implement OAuth 2.0 in a secure way, and ignores optional parameters in the requests that are important for a production application. There are two reasons for this. Firstly, this is done so that you can focus on understanding the general concepts of OAuth 2.0. Secondly, if you decide to implement your own libraries for OAuth 2.0, you should have a very good understanding of the specifications, and it is beyond the scope of this training to cover OAuth 2.0 in that much detail.
 
-# Starting the application :
+## Starting the application :
 
 There are two parts to the playground application: a frontend application and a backend application.
 
