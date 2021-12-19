@@ -1,4 +1,4 @@
-#Lab 3 : The OpenID Connect playground
+# Lab 3 : The OpenID Connect playground
 
 In this lab we are going to use the OpenID Connect (OIDC) playground in order to understand and experiment with OIDC in a practical way.
 The playground application does not use any libraries for OIDC, but rather all OIDC requests are crafted by the application itself. One thing to note here is that this application is not implementing OIDC in a secure way, and is ignoring optional parameters in the requests that are important for a production application. There are two reasons for this. Firstly, it is so you can focus on understanding the general concepts of OIDC. Secondly, if you decide to implement your own application libraries for OIDC you should have a very good understanding of the specifications, and it is beyond the scope of this training to cover OIDC in that much detail.

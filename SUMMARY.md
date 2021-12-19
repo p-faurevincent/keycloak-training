@@ -17,7 +17,7 @@
     * [Lab 2: Resource Server with Micronaut](lab5/bonus-labs/micronaut-server-app)
     * [Lab 3: Resource Server with Quarkus](lab5/bonus-labs/quarkus-server-app)
     * [Lab 4: Keycloak Testcontainers](lab5/bonus-labs/keycloak-test-containers)
-* [Lab 6 : Integrating Applications with Keycloak](lab6/README.md)
+* [Lab 6 : Configure Keycloak for production](lab6/README.md)
 * [Lab 7 : User federation using LDAP](lab7/README.md)
 * [Lab 8 : Using Github as an identity provider](lab8/README.md)
 * [Lab 9 : SAML SSO using an external identity provider](lab9/README.md)
