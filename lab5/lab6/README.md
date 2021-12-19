@@ -6,6 +6,8 @@ we have built in [lab 1](../lab1).
 In contrast to [Lab 2](../lab2) and [Lab 3](../lab3) this time the client will be using
 the [Angular](https://angular.io/) and the corresponding [OAuth 2.0/OIDC library](https://github.com/manfredsteyer/angular-oauth2-oidc).
 
+**Importan note** : this lab is build with Angular 11, so we recommend using a compatible nodeJs version (12.20.x for instance).
+
 ## Lab Contents
 
 * [Learning Targets](#learning-targets)
