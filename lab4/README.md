@@ -1,4 +1,4 @@
-# Lab 4 : Running the OAuth 2.0 playground
+# Lab 4 : The OAuth 2.0 playground
 
 For this lab, we are going to use the OAuth 2.0 playground, which is a basic Node JS that can be use to understand and experiment the OAuth 2.0 in a practical way.
 
