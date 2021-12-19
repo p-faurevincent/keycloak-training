@@ -32,4 +32,7 @@ out/
 bin/
 .vscode/
 
+node_modules
+
+
 
