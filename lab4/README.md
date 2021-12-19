@@ -100,7 +100,7 @@ Keycloak remembers what consent a user has given to a particular application, wh
 
 In the next section, we will look at strategies for scoping access tokens, which in essence means controlling what access a token provides to the application.
 
-##Limiting the access granted to access tokens
+## Limiting the access granted to access tokens
 
 There are a few different strategies that can be used to limit access for a specific access token. These include the following:
 - **Audience**: Allows listing the resource providers that should accept an access token.
@@ -109,7 +109,7 @@ There are a few different strategies that can be used to limit access for a spec
 
 Let's go through these one at a time and see exactly how this can be done with Keycloak, starting with audience.
 
-###Using the audience to limit token access
+### Using the audience to limit token access
 
 At the moment, access tokens issued to the frontend part of the playground application do not actually include the backend in the audience. The reason this works is that the backend part has not been configured to check the audience in the token.
 
@@ -139,7 +139,7 @@ Now go back to the client list and open the **oauth-playground** client. Click o
 
 When looking at the **aud** field of the access token, you may have noticed that account was included. The reason this is included is that by default, a client has a scope on all roles, and by default, a user has a few client roles for the account client that provide the user access to the Keycloak account console. In the next section, we will take a closer look at how roles work.
 
-###Using roles to limit token access
+### Using roles to limit token access
 
 Keycloak has built-in support for roles, which can be used to grant users permissions. Roles are also a very useful tool to limit the permissions for an application as you can configure what roles are included in the access token for a given application.
 
@@ -217,7 +217,7 @@ Return to the playground application and obtain a new access token. You will see
 
 In the next section, we will take a look at how scopes on their own can be leveraged to limit the access granted by a token.
 
-###Using the scope to limit token access
+### Using the scope to limit token access
 
 Let's imagine that we have a photo album service that provides access to view albums, create albums, and delete albums. We'll also pretend that the playground application offers functionality to view and manage photo albums.
 Start by creating the following three client scopes through the Keycloak admin console:
@@ -247,7 +247,7 @@ After clicking on **Yes**, the access token displayed within the playground appl
 
 By now, you should have a good understanding of the different techniques for limiting the access provided by a given access token. In the next section, we will take a look at how an application can validate an access token.
 
-###Validating access tokens
+### Validating access tokens
 
 We have two choices to validate an access token, either by invoking the token introspection endpoint provided by Keycloak, or by directly verifying the token.
 

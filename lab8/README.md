@@ -1,5 +1,4 @@
-Lab 8 : Using Github as an identity provider
-=============================================================
+# Lab 8 : Using Github as an identity provider
 
 In this lab, you will learn how to configure Github as an idenity provider for Keycloak.
 

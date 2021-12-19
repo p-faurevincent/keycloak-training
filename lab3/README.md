@@ -116,7 +116,7 @@ Let's take a look at the values within this response:
 - **session_state**: This is the ID of the session the user has with Keycloak.
 - **scope**: The application requests a scope from Keycloak in the authentication request, but the actual returned scope of the tokens may not match the requested scope.
 
-## Refresh token :
+## Refresh token
 
 Next, let's try to refresh the ID token. Click on the button labeled **4 – Refresh**, then click on the button labeled **Send Refresh Request**.
 
@@ -191,7 +191,7 @@ In the payload for the ID token, you will now notice the custom claim that you j
 
 Now that you have added a custom attribute, let's add roles to the ID token.
 
-##Adding roles to the ID token
+## Adding roles to the ID token
 
 By default, roles are not added to the ID token. You can change this behavior by going to **Client Scopes**, then selecting the **roles** client scope. Click on **Mappers**, then select **realm roles**. Turn on **Add to ID Token**, and click **Save**.
 
@@ -205,7 +205,7 @@ By now you should have a reasonably good understanding of how an application use
 
 In the next section, we will take a look at a different way an application can discover information about the authenticated user.
 
-##Invoking the UserInfo endpoint
+## Invoking the UserInfo endpoint
 
 In addition to being able to find information about the authenticated user from the ID token, it is also possible to invoke the UserInfo endpoint with an access token obtained through an OIDC flow.
 
@@ -245,7 +245,7 @@ Now click on **3 – Token**, then on Send Token Request. You will notice now th
 
 Now, if you go to **5 – UserInfo** and click on the **Send UserInfo Request** button you will also notice that the **UserInfo Request** fails.
 
-##Summary
+## Summary
 In this lab, you experienced first-hand the interactions in an OIDC authentication flow. You learned how the application prepares an authentication request and then redirects the user-agent to the Keycloak authorization endpoint for authentication. Then you learned how the application obtains an authorization code, which it exchanges for an ID token. By inspecting the ID token, you then learned how an application can find out information about the authenticated users. You also learned how to leverage client scopes and protocol mappers in Keycloak to add additional information about users.
 
 You should now have a basic understanding of OpenID Connect and how it can be used to secure your own applications. We will build on this knowledge later in the up-coming labs to get you ready to start securing all your applications with Keycloak.

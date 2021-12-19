@@ -1,5 +1,5 @@
-Lab 9 : SAML SSO using an external identity provider
-=============================================================
+# Lab 9 : SAML SSO using an external identity provider
+
 In this lab you will learn how to set up and use Keycloak to broker JumpCloud SAML 2.0 logins.
 
 We've based this configuration on the method described in the Keycloak Server Administration Guide's Identity Brokering section.

@@ -1,5 +1,4 @@
-Lab 7 : User federation using LDAP
-=============================================================
+# Lab 7 : User federation using LDAP
 
 For this lab we are going to use Openldap as a user provider.
 
