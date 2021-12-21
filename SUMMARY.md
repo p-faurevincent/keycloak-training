@@ -1,6 +1,6 @@
 # Keycloak Labs
 
-* [Lab 0 : set up the environnement](setup/README.md)
+* [Setup : Installing and running Keycloak](setup/README.md)
 * [Lab 1 : Discovering the Keycloak admin and account consoles](lab1/README.md)    
 * [Lab 2 : Securing Your First Application](lab2/README.md)
 * [Lab 3 : The OpenID Connect playground](lab3/README.md)

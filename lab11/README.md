@@ -1,4 +1,4 @@
-#Lab 11 : Creating and deploying a new theme
+# Lab 11 : Creating and deploying a new theme
 
 One of the main customization hooks – and probably what people use most – is changing Keycloak built-in themes to fit into your branding and to respect your UI and UX requirements.
 Keycloak provides an amazingly simple experience for changing themes and allows you to change most – if not all – of its UI, from the end user-facing pages to the administration console itself.
@@ -75,8 +75,8 @@ One important tip for when creating themes is to disable caching so that changes
 </theme>
 ```
 
-##Summary
+## Summary
 
-In the first part of this lab, you learned about how to create and deploy a theme to Keycloak. For that, you were provided with a basic example that changes the layout of the login page. You also learned that when creating a new theme, you usually want to disable caching so that any change you make to a theme is reflected when reloading the server pages.
+In this lab you learned about how to create and deploy a theme to Keycloak. For that, you were provided with a basic example that changes the layout of the login page. You also learned that when creating a new theme, you usually want to disable caching so that any change you make to a theme is reflected when reloading the server pages.
 
 

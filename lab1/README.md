@@ -1,6 +1,6 @@
 # Lab 1 : Discovering the Keycloak admin and account consoles
 
-In this section, we will take a look at the Keycloak admin and account consoles. The admin console is an extensive console that allows you to configure and manage Keycloak. The account console, on the other hand, is there to allow your end users to manage their accounts.
+In this lab, we will take a look at the Keycloak admin and account consoles. The admin console is an extensive console that allows you to configure and manage Keycloak. The account console, on the other hand, is there to allow your end users to manage their accounts.
 
 ## Getting started with the Keycloak admin console
 In this section, you will learn how to log in to the Keycloak admin console as well as learn how to set up the basic configuration needed to secure your first application.
