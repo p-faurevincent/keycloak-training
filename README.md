@@ -19,7 +19,7 @@ This training covers the following exciting features:
 To check system requirements and setup for this workshop please follow the setup [guide](./setup).
 
 **Following is what you need for this training:**
-Developers, sysadmins, security engineers, or anyone who wants to leverage Keycloak and its capabilities for application security will find this book useful. Beginner-level knowledge of app development and authentication and authorization is expected.
+Developers, sysadmins, security engineers, or anyone who wants to leverage Keycloak and its capabilities for application security will find this training useful. Beginner-level knowledge of app development and authentication and authorization is expected.
 
 ## Hands-On Labs
 
