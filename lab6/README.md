@@ -233,7 +233,7 @@ In this section, you learned about the basic steps to configure a production-gra
 
 In the next step, you will learn about how to configure Keycloak for high availability, starting with the necessary configuration to configure a reverse proxy or load balancer.
 
-# Enabling clustering
+## Enabling clustering
 
 Keycloak is designed for high availability, where, in addition to the persistent data kept in the database, it also uses a cache layer to replicate and keep state in-memory for fast data access. This cache layer is built on top of Infinispan, a high-performance key-value in-memory data store.
 
