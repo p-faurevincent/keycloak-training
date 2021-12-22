@@ -19,7 +19,7 @@ $ npm start
 Then, in a new terminal window, run the following commands to start the backend part:
 
 ```
-$ cd lab4/oauth-playground/ch5/backend/
+$ cd lab4/oauth-playground/backend/
 $ npm install
 $ npm start
 ```
