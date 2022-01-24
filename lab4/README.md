@@ -268,7 +268,7 @@ Keep this terminal open, then open the playground application and obtain a new a
 Now, you can invoke the token introspection endpoint by running the following command in the same terminal:
 
 ```
-$ curl --data "client_id=oauth-backend&client_secret=$SECRET&token=$TOKEN" http://localhost:8180/auth/realms/myrealm/protocol/openid-connect/token/introspec
+$ curl --data "client_id=oauth-backend&client_secret=$SECRET&token=$TOKEN" http://localhost:8180/auth/realms/myrealm/protocol/openid-connect/token/introspect
 ```
 
 The endpoint will return a JSON document with the state of the token, and associated information for the token, as shown in the following screenshot:
