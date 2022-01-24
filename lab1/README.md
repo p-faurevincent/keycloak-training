@@ -16,7 +16,7 @@ Once you have logged in, you will see the configuration for the master realm in 
 
 You will learn a lot more about the admin console throughout the training, but let's go through a few steps to make your Keycloak application ready to start securing applications.
 
-###Creating and configuring a realm
+### Creating and configuring a realm
 The first thing you will want to do is create a realm for your applications and users. Think of a realm as a tenant. A realm is fully isolated from other realms, it has its own configuration, and its own set of applications and users. This allows a single installation of Keycloak to be used for multiple purposes. For example, you may want to have one realm for internal applications and employees, and another realm for external applications and customers.
 
 To create a new realm, hover your mouse over the realm selector in the top-left corner (just below the Keycloak logo). When hovering your mouse over the realm selector, you will see a list of realms, including a button to create a new realm. Click on the **Add realm** button:
@@ -26,7 +26,7 @@ To create a new realm, hover your mouse over the realm selector in the top-left 
 On the next page, enter a name for the realm. As the name is used in URLs, the name should ideally not use special characters that need escaping in URLs (such as spaces). Once created, you can set a human friendly display name. For example, use **myrealm** for the name, and **My Realm** for the display name.
 
 
-###Creating a user
+### Creating a user
 Once you have created the realm, let's create the first user in the realm:
 
 1. From the left-hand menu, click on **Users**, and then click on **Add User**.
@@ -41,7 +41,7 @@ Before the user can log in, you have to create an initial temporary password. To
 
 If the **Temporary** option is enabled, the user is required to change the password when logging in for the first time. In cases where an administrator creates the user, this makes a lot of sense.
 
-###Creating a group
+### Creating a group
 
 Next, let's create a group and add the user we previously created to the group. From the menu on the left-hand side, click on **Groups**, and then click on **New**.
 
@@ -55,7 +55,7 @@ To add the user to the group, go back to the **Users** page. Click **View all** 
 
 Next, click on the **Groups** tab. In the right-hand column, select the group you created previously and click on **Join** to add the user to the group.
 
-###Creating a global role
+### Creating a global role
 To create a global role, click on **Roles** in the menu on the left-hand side, and then click on **Add Role**. Enter a role name, for example, **myrole**. You can also add a description to the role, which can be especially useful if there are other administrators.
 
 Any role in Keycloak can be turned into a composite role, allowing other roles to be added to the role. A user who is granted a composite role will dynamically be granted all roles within the composite role. Composite roles can even contain other composite roles. This feature can be very powerful, but, at the same time, should be used with some care. Composite roles can be a bit difficult to manage, and can also have a performance overhead if overused, especially if there are many layers of composite roles.
