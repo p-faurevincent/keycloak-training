@@ -24,7 +24,7 @@ With Docker, it is very easy to run Keycloak as you don't need to install a Java
 To run Keycloak on Docker, simply execute the following command:
 
 ```
-$ docker run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8080 quay.io/keycloak/keycloak
+$ docker run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8080:8080 quay.io/keycloak/keycloak
 ```
 
 As Keycloak does not ship with a default admin account, passing the environment variables, KEYCLOAK_USER and KEYCLOAK_PASSWORD, makes it easy to create an initial admin account. We are also using –p 8080 to publish the port used by Keycloak to the host, so as to make it easy to access Keycloak.
